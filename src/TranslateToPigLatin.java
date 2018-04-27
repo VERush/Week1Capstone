@@ -3,7 +3,7 @@ import java.util.Scanner;
 /*
  * Author Victoria Rush with help from Maurice Tedder, Tim Pieniazek, Allison Farr, and Stack Overflow
  */
-public class TranslateToPigLatinn {
+public class TranslateToPigLatin {
 
 	public static void main(String[] args) {
 		String input;
@@ -13,27 +13,36 @@ public class TranslateToPigLatinn {
 		Scanner scan = new Scanner(System.in);
 
 		do {
-			System.out.println("Enter a word to be translated: ");
+			System.out.println("Enter a sentence to be translated: ");
 			input = scan.nextLine();
 
 			// Convert to lower case
 			input = input.toLowerCase();
 
+			// String s = "I want to walk my dog";
+			String[] words = input.split(" ");
+
+			for (String word : words) {
+
+
 			// Translate to pig latin
 			String output = "";
 
 			// If vowel, add "way"
-			if (isVowel(input) == true) {
-				output = translateVowel(input);
+				if (isVowel(word) == true) {
+					output = translateVowel(word);
 			} else {
 				// Else, consonant translate
-				output = translateConsonant(input);
+					output = translateConsonant(word);
 			}
 
 			// Display result to console
-			System.out.println(output);
+				System.out.print(output + " ");
+
+			}
 
 			// Prompt user to continue
+			System.out.println();
 			System.out.println("Translate another line? (y/n): ");
 			cont = scan.nextLine();
 		} while (cont.equalsIgnoreCase("y"));
