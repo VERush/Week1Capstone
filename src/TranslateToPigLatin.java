@@ -12,22 +12,21 @@ public class TranslateToPigLatin {
 		// Prompt user for input
 		Scanner scan = new Scanner(System.in);
 
+		System.out.println("Welcome to the Pig Latin Translator!");
+		System.out.println();
+
 		do {
 			System.out.println("Enter a sentence to be translated: ");
 			input = scan.nextLine();
-
 			// Convert to lower case
 			input = input.toLowerCase();
 
-			// String s = "I want to walk my dog";
 			String[] words = input.split(" ");
+			String output = "";
 
 			for (String word : words) {
 
-
 			// Translate to pig latin
-			String output = "";
-
 			// If vowel, add "way"
 				if (isVowel(word) == true) {
 					output = translateVowel(word);
@@ -35,10 +34,8 @@ public class TranslateToPigLatin {
 				// Else, consonant translate
 					output = translateConsonant(word);
 			}
-
 			// Display result to console
 				System.out.print(output + " ");
-
 			}
 
 			// Prompt user to continue
@@ -68,18 +65,18 @@ public class TranslateToPigLatin {
 	}
 
 	public static String translateConsonant(String word) {
-		char a = 'a';
-		char e = 'e';
-		char iLetter = 'i';
-		char o = 'o';
-		char u = 'u';
+		char letterA = 'a';
+		char letterE = 'e';
+		char letterI = 'i';
+		char letterO = 'o';
+		char letterU = 'u';
 
 		int start = 0;
 		int firstVowel = 0;
 		int end = word.length();
 		for (int i = 0; i < end; i++) {
 			char c = (word.charAt(i));
-			if (c == a || c == e || c == iLetter || c == o || c == u) {
+			if (c == letterA || c == letterE || c == letterI || c == letterO || c == letterU) {
 				firstVowel = i;
 				break;
 			}
