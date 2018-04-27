@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 /*
  * Author Victoria Rush with help from Maurice Tedder, Tim Pieniazek, Allison Farr, and Stack Overflow
+ *   April 27, 2018
  */
 public class TranslateToPigLatin {
 
@@ -18,23 +19,26 @@ public class TranslateToPigLatin {
 		do {
 			System.out.println("Enter a sentence to be translated: ");
 			input = scan.nextLine();
+
 			// Convert to lower case
 			input = input.toLowerCase();
 
+			// Split sentence into words
 			String[] words = input.split(" ");
 			String output = "";
 
+			// Loop through each word in sentence
 			for (String word : words) {
 
-			// Translate to pig latin
-			// If vowel, add "way"
+				// Translate to pig latin
+				// If vowel, add "way"
 				if (isVowel(word) == true) {
 					output = translateVowel(word);
-			} else {
-				// Else, consonant translate
+				} else {
+					// Else, consonant translate
 					output = translateConsonant(word);
-			}
-			// Display result to console
+				}
+				// Display result to console
 				System.out.print(output + " ");
 			}
 
