@@ -32,13 +32,14 @@ public class TranslateToPigLatin {
 
 				// Translate to pig latin
 				// If vowel, add "way"
-				if (isVowel(word) == true) {
+				// if (isVowel(word) == true) { // == true is redundant
+				if (isVowel(word)) {
 					output = translateVowel(word);
 				} else {
 					// Else, consonant translate
 					output = translateConsonant(word);
 				}
-				// Display result to console
+				// Display result to console, one word at a time, with space after
 				System.out.print(output + " ");
 			}
 
@@ -58,9 +59,13 @@ public class TranslateToPigLatin {
 		if ((word.startsWith("a")) || (word.startsWith("e")) || (word.startsWith("i")) || (word.startsWith("o"))
 				|| (word.startsWith("u"))) {
 			return true;
-		} else {
-			return false;
+			// Next three lines commented out and replaced with single line to eliminate
+			// unneeded "else"
+			// } else {
+			// return false;
+			// }
 		}
+		return false;
 	}
 
 	private static String translateVowel(String word) {
@@ -74,13 +79,14 @@ public class TranslateToPigLatin {
 		char letterI = 'i';
 		char letterO = 'o';
 		char letterU = 'u';
+		char letterY = 'y';
 
 		int start = 0;
 		int firstVowel = 0;
 		int end = word.length();
 		for (int i = 0; i < end; i++) {
 			char c = (word.charAt(i));
-			if (c == letterA || c == letterE || c == letterI || c == letterO || c == letterU) {
+			if (c == letterA || c == letterE || c == letterI || c == letterO || c == letterU || c == letterY) {
 				firstVowel = i;
 				break;
 			}
