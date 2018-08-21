@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 /*
- * Author Victoria Rush with help from Maurice Tedder, Tim Pieniazek, Allison Farr, and Stack Overflow
+ * Author Victoria Rush
  *   April 27, 2018
+ *   Refined August 20, 2018
  */
 public class TranslateToPigLatin {
 
@@ -20,11 +21,14 @@ public class TranslateToPigLatin {
 			System.out.println("Enter a sentence to be translated: ");
 			input = scan.nextLine();
 
+			// Eliminate punctuation
 			// Convert to lower case
-			input = input.toLowerCase();
-
 			// Split sentence into words
-			String[] words = input.split(" ");
+			String[] words = input.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+
+			// input = input.toLowerCase();
+
+			// String[] words = input.split(" ");
 			String output = "";
 
 			// Loop through each word in sentence
@@ -32,7 +36,6 @@ public class TranslateToPigLatin {
 
 				// Translate to pig latin
 				// If vowel, add "way"
-				// if (isVowel(word) == true) { // == true is redundant
 				if (isVowel(word)) {
 					output = translateVowel(word);
 				} else {
@@ -54,16 +57,10 @@ public class TranslateToPigLatin {
 		scan.close();
 	}
 
-	private static boolean isVowel(String word) {
-		// char firstChar = word.charAt(0);
+	private static boolean isVowel(String word) { // char firstChar = word.charAt(0);
 		if ((word.startsWith("a")) || (word.startsWith("e")) || (word.startsWith("i")) || (word.startsWith("o"))
 				|| (word.startsWith("u"))) {
 			return true;
-			// Next three lines commented out and replaced with single line to eliminate
-			// unneeded "else"
-			// } else {
-			// return false;
-			// }
 		}
 		return false;
 	}
